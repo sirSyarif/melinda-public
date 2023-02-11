@@ -457,25 +457,25 @@ export default function UserManagementComponent() {
 								return (
 									<tr key={key}>
 										<td className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer">
-											{datas.user}
+											{datas?.user}
 										</td>
 										<td className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer">
-											{datas.id_user}
+											{datas?.id_user}
 										</td>
 										<td className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer">
-											{datas.email}
+											{datas?.email}
 										</td>
 										<td className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer">
-											{datas.phone}
+											{datas?.phone}
 										</td>
 										<td className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer">
-											{datas.volume} ml
+											{datas?.volume} ml
 										</td>
 										<td className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer">
-											{datas.poin}
+											{datas?.poin}
 										</td>
 										<td className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer">
-											{datas.status}
+											{datas?.status}
 										</td>
 									</tr>
 								);

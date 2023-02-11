@@ -224,7 +224,7 @@ export default function UserManagementComponent() {
 								value={selected}
 								className="bg-[#94D60A] rounded-md outline-none text-white p-[2px] mt-[3px] cursor-pointer"
 								onChange={(e) => {
-									setSelected(e.target.value);
+									setSelected(parseInt(e.target.value));
 									{
 										waktuData == 'baru'
 											? setTimeout(() => {
