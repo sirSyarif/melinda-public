@@ -157,7 +157,7 @@ export default function UserManagementComponent() {
 
 	const [jmlData, setJmlData] = useState(5);
 
-	const searchUserSubmit = (e) => {
+	const searchUserSubmit = (e: any) => {
 		e.preventDefault();
 		getuserDatas(
 			`https://fadhli.pythonanywhere.com/user/?ordering=createdAt&search=${searchUser}`
