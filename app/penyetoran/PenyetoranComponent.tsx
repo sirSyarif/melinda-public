@@ -260,7 +260,7 @@ export default function UserManagementComponent() {
 							</tr>
 						</thead>
 						<tbody className="">
-							{userDatas?.result.map((datas: any, key) => {
+							{userDatas?.result.map((datas: any, key: number) => {
 								return (
 									<tr key={key}>
 										<td className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer">
