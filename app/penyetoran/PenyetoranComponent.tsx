@@ -6,7 +6,7 @@ import { AiOutlineSearch, AiOutlineClose } from 'react-icons/ai';
 import axios from 'axios';
 
 export default function UserManagementComponent() {
-	const [userDatas, setUserDatas] = useState<any[]>([]);
+	const [userDatas, setUserDatas] = useState<any[]>({});
 	const [userDeleting, setUserDeleting] = useState('');
 	const [modal, setModal] = useState('');
 	const [searchUser, setSearch] = useState('');
