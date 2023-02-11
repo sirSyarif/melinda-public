@@ -127,7 +127,7 @@ export default function UserManagementComponent() {
 	const [currentPage, setCurrentPage] = useState('page=1');
 	const [searchUser, setSearch] = useState('');
 
-	const getuserDatas = async (uri: string) => {
+	const getuserDatas = async (uri) => {
 		if (!uri) return;
 
 		setLoading(true);
@@ -138,7 +138,7 @@ export default function UserManagementComponent() {
 		setUserDatas(res.data);
 	};
 
-	const deleteUser = async (id: any) => {
+	const deleteUser = async (id) => {
 		const res = await axios.delete(
 			`https://fadhli.pythonanywhere.com/user/${id}/delete/`
 		);
@@ -157,7 +157,7 @@ export default function UserManagementComponent() {
 
 	const [jmlData, setJmlData] = useState(5);
 
-	const searchUserSubmit = (e: any) => {
+	const searchUserSubmit = (e) => {
 		e.preventDefault();
 		getuserDatas(
 			`https://fadhli.pythonanywhere.com/user/?ordering=createdAt&search=${searchUser}`
@@ -223,24 +223,24 @@ export default function UserManagementComponent() {
 								id=""
 								value={selected}
 								className="bg-[#94D60A] rounded-md outline-none text-white p-[2px] mt-[3px] cursor-pointer"
-								// onChange={(e) => {
-								// 	setSelected(e.target.value);
-								// 	{
-								// 		waktuData == 'baru'
-								// 			? setTimeout(() => {
-								// 					getuserDatas(
-								// 						`https://fadhli.pythonanywhere.com/user/?limit=${e.target.value}`
-								// 						// `https://fourtour.site/melinda/produk/0`
-								// 					);
-								// 			  }, 100)
-								// 			: setTimeout(() => {
-								// 					getuserDatas(
-								// 						`https://fadhli.pythonanywhere.com/user/?ordering=createdAt&limit=${e.target.value}`
-								// 						// `https://fourtour.site/melinda/produk/0`
-								// 					);
-								// 			  }, 100);
-								// 	}
-								// }}
+								onChange={(e) => {
+									setSelected(e.target.value);
+									{
+										waktuData == 'baru'
+											? setTimeout(() => {
+													getuserDatas(
+														`https://fadhli.pythonanywhere.com/user/?limit=${e.target.value}`
+														// `https://fourtour.site/melinda/produk/0`
+													);
+											  }, 100)
+											: setTimeout(() => {
+													getuserDatas(
+														`https://fadhli.pythonanywhere.com/user/?ordering=createdAt&limit=${e.target.value}`
+														// `https://fourtour.site/melinda/produk/0`
+													);
+											  }, 100);
+									}
+								}}
 							>
 								<option
 									value="5"
