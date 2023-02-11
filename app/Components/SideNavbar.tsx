@@ -90,8 +90,8 @@ export default function SideNavbar() {
 							router == '/penukaran' ? 'bg-[#6EA300]' : ''
 						} hover:bg-[#6EA300] mt-5 text-white p-1 rounded-full`}
 					>
-						<BsBagFill className=" ml-3 text-md" />
-						<p className="pl-3 text-sm font-semibold">Produk</p>
+						<RiExchangeDollarLine className=" ml-3 text-md" />
+						<p className="pl-3 text-sm font-semibold">Penukaran</p>
 					</Link>
 
 					<Image
