@@ -347,7 +347,7 @@ export default function UserManagementComponent() {
 						loading ? 'block' : 'hidden'
 					}  w-full text-center right-0 absolute`}
 				>
-					Loading...
+					Loading....
 				</h1>
 
 				<div className="wrapper flex justify-between items-center">
@@ -359,22 +359,22 @@ export default function UserManagementComponent() {
 								id=""
 								value={selected}
 								className="bg-[#94D60A] rounded-md outline-none text-white p-[2px] mt-[3px] cursor-pointer"
-								onChange={(e) => {
-									setSelected(e.target.value);
-									{
-										waktuData == 'baru'
-											? setTimeout(() => {
-													getuserDatas(
-														`https://fadhli.pythonanywhere.com/minyak/?limit=${e.target.value}`
-													);
-											  }, 100)
-											: setTimeout(() => {
-													getuserDatas(
-														`https://fadhli.pythonanywhere.com/minyak/?limit=${e.target.value}`
-													);
-											  }, 100);
-									}
-								}}
+								// onChange={(e) => {
+								// 	setSelected(e.target.value);
+								// 	{
+								// 		waktuData == 'baru'
+								// 			? setTimeout(() => {
+								// 					getuserDatas(
+								// 						`https://fadhli.pythonanywhere.com/minyak/?limit=${e.target.value}`
+								// 					);
+								// 			  }, 100)
+								// 			: setTimeout(() => {
+								// 					getuserDatas(
+								// 						`https://fadhli.pythonanywhere.com/minyak/?limit=${e.target.value}`
+								// 					);
+								// 			  }, 100);
+								// 	}
+								// }}
 							>
 								<option value="5" className=" cursor-pointer">
 									5
