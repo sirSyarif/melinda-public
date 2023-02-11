@@ -223,24 +223,23 @@ export default function UserManagementComponent() {
 								id=""
 								value={selected}
 								className="bg-[#94D60A] rounded-md outline-none text-white p-[2px] mt-[3px] cursor-pointer"
-								onChange={(e) => {
-									setSelected(parseInt(e.target.value));
-									{
-										waktuData == 'baru'
-											? setTimeout(() => {
-													getuserDatas(
-														`https://fadhli.pythonanywhere.com/user/?limit=${e.target.value}`
-														// `https://fourtour.site/melinda/produk/0`
-													);
-											  }, 100)
-											: setTimeout(() => {
-													getuserDatas(
-														`https://fadhli.pythonanywhere.com/user/?ordering=createdAt&limit=${e.target.value}`
-														// `https://fourtour.site/melinda/produk/0`
-													);
-											  }, 100);
-									}
-								}}
+								// onChange={(e) => {
+								// 	setSelected(parseInt(e.target.value));
+								// 	{
+								// 		waktuData == 'baru'
+								// 					getuserDatas(
+								// 						`https://fadhli.pythonanywhere.com/user/?limit=${e.target.value}`
+								// 						// `https://fourtour.site/melinda/produk/0`
+								// 					);
+								// 			  }, 100)
+								// 			: setTimeout(() => {
+								// 					getuserDatas(
+								// 						`https://fadhli.pythonanywhere.com/user/?ordering=createdAt&limit=${e.target.value}`
+								// 						// `https://fourtour.site/melinda/produk/0`
+								// 					);
+								// 			  }, 100);
+								// 	}
+								// }}
 							>
 								<option
 									value="5"
