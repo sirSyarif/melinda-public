@@ -228,21 +228,21 @@ export default function UserManagementComponent() {
 								return (
 									<tr key={key}>
 										<td className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer">
-											{datas.name}
+											{datas['name']}
 										</td>
 										<td className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer">
-											{datas.id}
+											{datas['id']}
 										</td>
 										<td className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer">
-											{datas.email}
+											{datas['email']}
 										</td>
 										<td className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer">
-											{datas.phone}
+											{datas['phone']}
 										</td>
 										<td
 											className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer"
 											onClick={(e) =>
-												setModal({ name: datas.name, id: datas.id })
+												setModal({ name: datas['name'], id: datas['id'] })
 											}
 										>
 											<div
@@ -266,7 +266,7 @@ export default function UserManagementComponent() {
 						<div className="btn-group border-[#94D60A] border-2 md:w-44 w-32 justify-between rounded-lg flex">
 							<button
 								className="btn"
-								onClick={(e) => getuserDatas(userDatas.previous)}
+								onClick={(e) => getuserDatas(userDatas['previous'])}
 							>
 								<p className="text-[#94D60A] pl-1 text-sm md:text-md">
 									Previous
@@ -278,7 +278,7 @@ export default function UserManagementComponent() {
 							<button
 								className="btn"
 								onClick={(e) => {
-									getuserDatas(userDatas.next);
+									getuserDatas(userDatas['next']);
 								}}
 							>
 								<p className="text-[#94D60A] pr-1 text-sm	">Next</p>
