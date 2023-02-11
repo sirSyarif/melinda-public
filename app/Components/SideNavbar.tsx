@@ -11,6 +11,7 @@ import { RiExchangeDollarLine } from 'react-icons/ri';
 import { FaMoneyBillWave } from 'react-icons/fa';
 import { GiOilDrum } from 'react-icons/gi';
 import Link from 'next/link';
+import { BsBagFill } from 'react-icons/bs';
 import { usePathname } from 'next/navigation';
 
 export default function SideNavbar() {
@@ -89,8 +90,8 @@ export default function SideNavbar() {
 							router == '/penukaran' ? 'bg-[#6EA300]' : ''
 						} hover:bg-[#6EA300] mt-5 text-white p-1 rounded-full`}
 					>
-						<RiExchangeDollarLine className=" ml-3 text-md" />
-						<p className="pl-3 text-sm font-semibold">Penukaran</p>
+						<BsBagFill className=" ml-3 text-md" />
+						<p className="pl-3 text-sm font-semibold">Produk</p>
 					</Link>
 
 					<Image

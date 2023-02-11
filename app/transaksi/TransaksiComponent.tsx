@@ -254,6 +254,7 @@ import { useState, Fragment, useEffect } from 'react';
 import { Tab, Listbox, Transition } from '@headlessui/react';
 import { HiOutlineChevronDown } from 'react-icons/hi';
 import { AiOutlineSearch, AiOutlineClose } from 'react-icons/ai';
+import { IoMdRefresh } from 'react-icons/io';
 import axios from 'axios';
 
 export default function UserManagementComponent() {
@@ -261,6 +262,7 @@ export default function UserManagementComponent() {
 	const [userDeleting, setUserDeleting] = useState('');
 	const [modal, setModal] = useState('');
 	const [loading, setLoading] = useState(true);
+	const [searchUser, setSearch] = useState('');
 
 	const getuserDatas = async (uri: string) => {
 		if (!uri) return;
@@ -282,7 +284,13 @@ export default function UserManagementComponent() {
 	console.log(waktuData);
 	console.log(jmlData);
 	console.log(selected);
-	const [searchUser, setSearch] = useState('');
+
+	const searchUserSubmit = (e: any) => {
+		e.preventDefault();
+		getuserDatas(
+			`https://fadhli.pythonanywhere.com/minyak/?ordering=createdAt&search=${searchUser}`
+		);
+	};
 
 	return (
 		<div className="pr-0 md:pr-5 z-0 pb-10 overflow-auto">
@@ -296,7 +304,7 @@ export default function UserManagementComponent() {
 						<thead>
 							<tr>
 								<td>Dari tanggal: </td>
-								<td>Sampai tanggal: </td>
+								<td className="pl-2">Sampai tanggal: </td>
 								<td></td>
 								<td></td>
 							</tr>
@@ -307,15 +315,21 @@ export default function UserManagementComponent() {
 									<input
 										type="date"
 										placeholder="."
-										className=" placeholder-transparent"
+										className=" placeholder-transparent border-[#94D60A] border-2 bg-[#F8FFE9] rounded-md px-1"
 									/>
 								</td>
 								<td>
 									<input
 										type="date"
 										placeholder="."
-										className=" placeholder-transparent"
+										className=" placeholder-transparent border-[#94D60A] border-2 bg-[#F8FFE9] rounded-md px-1 ml-2"
 									/>
+								</td>
+								<td>
+									<AiOutlineSearch className="bg-[#94D60A] text-white rounded-md text-[26px] ml-2 cursor-pointer" />
+								</td>
+								<td>
+									<IoMdRefresh className="bg-[#94D60A] text-white rounded-md text-[26px] ml-2 cursor-pointer" />
 								</td>
 							</tr>
 						</tbody>
@@ -401,10 +415,20 @@ export default function UserManagementComponent() {
 							</button>
 						</div>
 					</div>
-					<form action="" className="relative">
+					<form
+						action=""
+						className="relative"
+						onSubmit={(e) => {
+							searchUserSubmit(e);
+						}}
+					>
 						<input
 							className="search flex items-center border-[#94D60A] border-[1px] mr-6 p-1 gap-2 md:w-60 w-10/12 rounded-lg bg-transparent placeholder:font-semibold peer z-20 pl-7"
 							placeholder="Search"
+							onChange={(e) => {
+								setSearch(e.target.value);
+							}}
+							value={searchUser}
 						/>
 						<AiOutlineSearch className="text-[#00000080] font-semibold absolute top-2 left-1 duration-200 peer-placeholder-shown:font-bold z-0" />
 					</form>
@@ -487,7 +511,7 @@ export default function UserManagementComponent() {
 
 			{/* TABLE PENUKARAN */}
 
-			<div className=" ml-0 md:ml-10 lg:ml-72 mt-10 w-full md:w-auto min-h-full px-2 sm:px-0 bg-[#F8FFE9] relative rounded shadow-md">
+			{/* <div className=" ml-0 md:ml-10 lg:ml-72 mt-10 w-full md:w-auto min-h-full px-2 sm:px-0 bg-[#F8FFE9] relative rounded shadow-md">
 				<h1 className="text-[#94D60A] pl-5 pt-6 font-bold text-3xl">
 					Transaksi Penukaran
 				</h1>
@@ -615,10 +639,7 @@ export default function UserManagementComponent() {
 					</table>
 
 					<div className="footer flex justify-between mt-5 pb-5 p-1 items-center">
-						<h1 className="font-semibold">
-							{/* Showing {selected} to {userDatas.count} */}
-							Showing {selected} data
-						</h1>
+						<h1 className="font-semibold">Showing {selected} data</h1>
 						<div className="btn-group border-[#94D60A] border-2 md:w-44 w-32 justify-between rounded-lg flex">
 							<button
 								className="btn"
@@ -640,7 +661,7 @@ export default function UserManagementComponent() {
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 }

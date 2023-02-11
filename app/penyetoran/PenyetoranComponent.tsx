@@ -201,6 +201,7 @@ export default function UserManagementComponent() {
 	const [userDatas, setUserDatas] = useState({ count: 0, results: [] });
 	const [userDeleting, setUserDeleting] = useState('');
 	const [modal, setModal] = useState('');
+	const [searchUser, setSearch] = useState('');
 
 	const getuserDatas = async (uri: string) => {
 		if (!uri) return;
@@ -228,13 +229,18 @@ export default function UserManagementComponent() {
 
 	const modalTrigger = (id: any) => {
 		setModal(id);
-		S;
 	};
 
 	const [jmlData, setJmlData] = useState(5);
 	console.log(waktuData);
 	console.log(jmlData);
-	const [searchUser, setSearch] = useState('');
+
+	const searchUserSubmit = (e: any) => {
+		e.preventDefault();
+		getuserDatas(
+			`https://fadhli.pythonanywhere.com/minyak/setor/?ordering=createdAt&search=${searchUser}`
+		);
+	};
 
 	return (
 		<div className="pr-0 md:pr-5 z-0 pb-10 overflow-auto">
@@ -361,10 +367,20 @@ export default function UserManagementComponent() {
 							</button>
 						</div>
 					</div>
-					<form action="" className="relative">
+					<form
+						action=""
+						className="relative"
+						onSubmit={(e) => {
+							searchUserSubmit(e);
+						}}
+					>
 						<input
 							className="search flex items-center border-[#94D60A] border-[1px] mr-6 p-1 gap-2 md:w-60 w-10/12 rounded-lg bg-transparent placeholder:font-semibold peer z-20 pl-7"
 							placeholder="Search"
+							onChange={(e) => {
+								setSearch(e.target.value);
+							}}
+							value={searchUser}
 						/>
 						<AiOutlineSearch className="text-[#00000080] font-semibold absolute top-2 left-1 duration-200 peer-placeholder-shown:font-bold z-0" />
 					</form>
