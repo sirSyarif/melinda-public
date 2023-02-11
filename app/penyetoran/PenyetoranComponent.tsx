@@ -6,7 +6,7 @@ import { AiOutlineSearch, AiOutlineClose } from 'react-icons/ai';
 import axios from 'axios';
 
 export default function UserManagementComponent() {
-	const [userDatas, setUserDatas] = useState({ count: 0, results: [] });
+	const [userDatas, setUserDatas] = useState<any[]>([{ count: 0, results: [] }]);
 	const [userDeleting, setUserDeleting] = useState('');
 	const [modal, setModal] = useState('');
 	const [searchUser, setSearch] = useState('');
@@ -260,24 +260,24 @@ export default function UserManagementComponent() {
 							</tr>
 						</thead>
 						<tbody className="">
-							{userDatas['results'].map((datas, key) => {
+							{userDatas['results'].map((datas: any, key) => {
 								return (
 									<tr key={key}>
 										<td className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer">
-											{datas.user}
+											{datas['user']}
 										</td>
 										<td className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer">
-											{datas.id_user}
+											{datas['id_user']}
 										</td>
 										<td className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer">
-											{datas.email}
+											{datas['email']}
 										</td>
 										<td className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer">
-											{datas.phone}
+											{datas['phone']}
 										</td>
 										<td
 											className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer"
-											onClick={(e) => modalTrigger(datas.id)}
+											onClick={(e) => modalTrigger(datas['id'])}
 										>
 											<div className="p-1 border-2 border-[#94D60A] text-[#94D60A]  rounded text-center">
 												Verifikasi
@@ -297,7 +297,7 @@ export default function UserManagementComponent() {
 						<div className="btn-group border-[#94D60A] border-2 md:w-44 w-32 justify-between rounded-lg flex">
 							<button
 								className="btn"
-								onClick={(e) => getuserDatas(userDatas.previous)}
+								onClick={(e) => getuserDatas(userDatas['previous'])}
 							>
 								<p className="text-[#94D60A] pl-1 text-sm md:text-md">
 									Previous
@@ -308,7 +308,7 @@ export default function UserManagementComponent() {
 							</button>
 							<button
 								className="btn"
-								onClick={(e) => getuserDatas(userDatas.next)}
+								onClick={(e) => getuserDatas(userDatas['next'])}
 							>
 								<p className="text-[#94D60A] pr-1 text-sm	">Next</p>
 							</button>
