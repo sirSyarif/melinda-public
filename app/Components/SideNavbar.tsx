@@ -11,8 +11,11 @@ import { RiExchangeDollarLine } from 'react-icons/ri';
 import { FaMoneyBillWave } from 'react-icons/fa';
 import { GiOilDrum } from 'react-icons/gi';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function SideNavbar() {
+	const router = usePathname();
+	const [active, setActive] = useState('');
 	const [nav, setNav] = useState(true);
 
 	const toggle = () => {
@@ -44,7 +47,9 @@ export default function SideNavbar() {
 					<Image src={logo} alt="yoi" className=" md:block" />
 					<Link
 						href={'/dashboard'}
-						className={`dashboard flex items-center bg-[#6EA300] hover:bg-[#6EA300]
+						className={`dashboard flex items-center ${
+							router == '/dashboard' ? 'bg-[#6EA300]' : ''
+						} hover:bg-[#6EA300]
 					 mt-5 text-white p-1 rounded-full`}
 					>
 						<AiOutlineDashboard className=" ml-3 text-md" />
@@ -52,7 +57,9 @@ export default function SideNavbar() {
 					</Link>
 					<Link
 						href={'/users'}
-						className={`dashboard flex items-center 'bg-[#6EA300]'
+						className={`dashboard flex items-center ${
+							router == '/users' ? 'bg-[#6EA300]' : ''
+						}
 						hover:bg-[#6EA300] mt-5 text-white p-1 rounded-full`}
 					>
 						<HiUserGroup className=" ml-3 text-md" />
@@ -60,21 +67,27 @@ export default function SideNavbar() {
 					</Link>
 					<Link
 						href={'/transaksi	'}
-						className={`dashboard flex items-center 'bg-[#6EA300]' hover:bg-[#6EA300] mt-5 text-white p-1 rounded-full`}
+						className={`dashboard flex items-center ${
+							router == '/transaksi' ? 'bg-[#6EA300]' : ''
+						} hover:bg-[#6EA300] mt-5 text-white p-1 rounded-full`}
 					>
 						<FaMoneyBillWave className=" ml-3 text-md" />
 						<p className="pl-3 text-sm font-semibold">Transaksi</p>
 					</Link>
 					<Link
 						href={'/penyetoran'}
-						className={`dashboard flex items-center 'bg-[#6EA300]' hover:bg-[#6EA300] mt-5 text-white p-1 rounded-full`}
+						className={`dashboard flex items-center ${
+							router == '/penyetoran' ? 'bg-[#6EA300]' : ''
+						} hover:bg-[#6EA300] mt-5 text-white p-1 rounded-full`}
 					>
 						<GiOilDrum className=" ml-3 text-md" />
 						<p className="pl-3 text-sm font-semibold">Penyetoran</p>
 					</Link>
 					<Link
 						href={'/penukaran'}
-						className={`dashboard flex items-center 'bg-[#6EA300]' hover:bg-[#6EA300] mt-5 text-white p-1 rounded-full`}
+						className={`dashboard flex items-center ${
+							router == '/penukaran' ? 'bg-[#6EA300]' : ''
+						} hover:bg-[#6EA300] mt-5 text-white p-1 rounded-full`}
 					>
 						<RiExchangeDollarLine className=" ml-3 text-md" />
 						<p className="pl-3 text-sm font-semibold">Penukaran</p>

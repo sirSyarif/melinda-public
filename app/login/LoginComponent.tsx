@@ -7,9 +7,22 @@ import Logologin from '../../public/Logo-Login.jpeg';
 import Image from 'next/image';
 import { MdOutlineAlternateEmail } from 'react-icons/md';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
+import axios from 'axios';
 
 export default function LoginComponent() {
 	const [showPass, setShowPass] = useState(false);
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+
+	const Adminlogin = async (e: any) => {
+		e.preventDefault();
+		const res = await axios.post(`https://fadhli.pythonanywhere.com/login/`, {
+			email,
+			password,
+		});
+
+		console.log(res);
+	};
 
 	const ShowPass = () => {
 		setShowPass(!showPass);
@@ -27,6 +40,8 @@ export default function LoginComponent() {
 
 	return (
 		<div className="bg-[#94D60A] h-screen flex justify-center items-center z-10">
+			<div className="absolute z-30 h-screen w-56 bg-[#94D60A] left-0 hidden lg:block"></div>
+			<div className="absolute z-30 w-screen h-14 bg-[#94D60A] top-0 block lg:hidden"></div>
 			{errors.email && errors.email.type == 'required' && (
 				<div
 					className={`absolute top-10 bg-[#E5083C] text-sm text-white p-2 rounded flex items-center gap-2 `}
@@ -41,7 +56,13 @@ export default function LoginComponent() {
 					<p className="text-xs text-[#828282] font-semibold">
 						Masukan email dan kata sandi
 					</p>
-					<form onSubmit={handleSubmit(navigate)} action="" className="mt-6  ">
+					<form
+						onSubmit={(e) => {
+							Adminlogin(e);
+						}}
+						action=""
+						className="mt-6 "
+					>
 						<div className="user relative">
 							<label htmlFor="email">
 								<MdOutlineAlternateEmail className="text-[#00000059] font-semibold absolute z-10 right-2 top-2 cursor-pointer" />
@@ -51,6 +72,9 @@ export default function LoginComponent() {
 								className="peer rounded-2xl p-1 pl-3 border border-[#00000033] relative w-full placeholder-transparent bg-transparent z-10 text-sm"
 								placeholder="Email"
 								{...register('email', { required: true })}
+								onChange={(e) => {
+									setEmail(e.target.value);
+								}}
 							/>
 							<label className=" text-sm text-black font-semibold absolute left-3 -top-3 peer-placeholder-shown:top-[3px] peer-placeholder-shown:text-[#00000059] bg-white peer-placeholder-shown:bg-transparent z-10 peer-placeholder-shown:z-0 peer-placeholder-shown:text-sm duration-100">
 								user@gmail.com
@@ -72,6 +96,9 @@ export default function LoginComponent() {
 								className="peer rounded-2xl p-1 pl-3 border border-[#00000033] relative w-full placeholder-transparent bg-transparent z-10 text-sm"
 								placeholder="password"
 								{...register('password', { required: true })}
+								onChange={(e) => {
+									setPassword(e.target.value);
+								}}
 							/>
 							<label className=" text-sm text-black font-semibold absolute left-3 -top-3 peer-placeholder-shown:top-[3px] peer-placeholder-shown:text-[#00000059] bg-white peer-placeholder-shown:bg-transparent z-10 peer-placeholder-shown:z-0 peer-placeholder-shown:text-sm duration-100">
 								Password
