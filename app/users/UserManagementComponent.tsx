@@ -49,6 +49,12 @@ export default function UserManagementComponent() {
 		);
 	};
 
+	// let noPage = 1;
+	// const setPaging = () => {
+	// 	noPage + 1;
+	// };
+	// console.log(noPage);
+
 	return (
 		<div className="pr-0 md:pr-5 z-0 pb-10 overflow-auto">
 			{/* MODAL  */}
@@ -271,7 +277,9 @@ export default function UserManagementComponent() {
 							</button>
 							<button
 								className="btn"
-								onClick={(e) => getuserDatas(userDatas.next)}
+								onClick={(e) => {
+									getuserDatas(userDatas.next);
+								}}
 							>
 								<p className="text-[#94D60A] pr-1 text-sm	">Next</p>
 							</button>

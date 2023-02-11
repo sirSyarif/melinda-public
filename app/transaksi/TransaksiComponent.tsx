@@ -341,13 +341,15 @@ export default function UserManagementComponent() {
 				<h1 className="text-[#94D60A] pl-5 pt-6 font-bold text-3xl">
 					Transaksi Penyetoran
 				</h1>
-				{/* <h1
+
+				<h1
 					className={`${
 						loading ? 'block' : 'hidden'
 					}  w-full text-center right-0 absolute`}
 				>
 					Loading...
-				</h1> */}
+				</h1>
+
 				<div className="wrapper flex justify-between items-center">
 					<div className=" p-5 flex gap-5 items-center">
 						<div className="jmlData">

@@ -118,7 +118,7 @@ import { AiOutlineSearch, AiOutlineClose } from 'react-icons/ai';
 import axios from 'axios';
 
 export default function UserManagementComponent() {
-	const [userDatas, setUserDatas] = useState({ count: 0, data: [] });
+	const [userDatas, setUserDatas] = useState({ count: 0, results: [] });
 	// const [userDatas, setUserDatas] = useState({ [] });
 
 	const [userDeleting, setUserDeleting] = useState('');
@@ -147,8 +147,8 @@ export default function UserManagementComponent() {
 	};
 
 	useEffect(() => {
-		// getuserDatas('https://fadhli.pythonanywhere.com/user/?limit=5&page=1');
-		getuserDatas('https://fourtour.site/melinda/produk/0');
+		getuserDatas('https://fadhli.pythonanywhere.com/user/?limit=5&page=1');
+		// getuserDatas('https://fourtour.site/melinda/produk/0');
 	}, []);
 
 	const [selected, setSelected] = useState(5);
@@ -174,27 +174,27 @@ export default function UserManagementComponent() {
 			>
 				<div className="bg-[#F8FFE9] rounded pt-3 pl-8 pr-8 pb-5">
 					<div className="flex w-full justify-center items-center gap-5 relative">
-						<h1 className="text-[#94D60A] text-3xl">Hapus</h1>
+						<h1 className="text-[#94D60A] text-3xl pt-5"> ON CONTRUCTION</h1>
 						<AiOutlineClose
 							className="text-[#94D60A] text-xl absolute right-0 top-0 cursor-pointer"
 							onClick={(e) => setModal({ name: '', id: '' })}
 						/>
 					</div>
 					<p className=" w-1/2 mx-auto text-center mt-10 text-sm text-[#00000080]">
-						Apakah kamu yakin akan menghapus
-						<span className=" text-[#94D60A]"> {modal.name}</span>
+						Page is still under Contruction
+						{/* <span className=" text-[#94D60A]"> {modal.name}</span> */}
 					</p>
-					<button
+					{/* <button
 						className="bg-[#94D60A] w-full rounded-md text-white mt-10"
 						onClick={(e) => deleteUser(modal.id)}
 					>
-						Iya
-					</button>
+						Go back
+					</button> */}
 				</div>
 			</div>
 
 			<h1 className="text-[#94D60A] pl-2 md:pl-10 lg:pl-72 pt-6 font-bold text-3xl">
-				Produk
+				Penukaran
 			</h1>
 
 			{/* {loading ? (
@@ -229,14 +229,14 @@ export default function UserManagementComponent() {
 										waktuData == 'baru'
 											? setTimeout(() => {
 													getuserDatas(
-														// `https://fadhli.pythonanywhere.com/user/?limit=${e.target.value}`
-														`https://fourtour.site/melinda/produk/0`
+														`https://fadhli.pythonanywhere.com/user/?limit=${e.target.value}`
+														// `https://fourtour.site/melinda/produk/0`
 													);
 											  }, 100)
 											: setTimeout(() => {
 													getuserDatas(
-														// `https://fadhli.pythonanywhere.com/user/?ordering=createdAt&limit=${e.target.value}`
-														`https://fourtour.site/melinda/produk/0`
+														`https://fadhli.pythonanywhere.com/user/?ordering=createdAt&limit=${e.target.value}`
+														// `https://fourtour.site/melinda/produk/0`
 													);
 											  }, 100);
 									}
@@ -272,8 +272,8 @@ export default function UserManagementComponent() {
 								onClick={(e) => {
 									setWaktuData('baru'),
 										getuserDatas(
-											// 'https://fadhli.pythonanywhere.com/user/?limit=5&page=1'
-											`https://fourtour.site/melinda/produk/0`
+											'https://fadhli.pythonanywhere.com/user/?limit=5&page=1'
+											// `https://fourtour.site/melinda/produk/0`
 										);
 								}}
 							>
@@ -288,8 +288,8 @@ export default function UserManagementComponent() {
 								onClick={(e) => {
 									setWaktuData('lama'),
 										getuserDatas(
-											// 'https://fadhli.pythonanywhere.com/user/?ordering=createdAt'
-											`https://fourtour.site/melinda/produk/0`
+											'https://fadhli.pythonanywhere.com/user/?ordering=createdAt'
+											// `https://fourtour.site/melinda/produk/0`
 										);
 								}}
 							>
@@ -325,11 +325,11 @@ export default function UserManagementComponent() {
 								<td className="rounded-bl-lg rounded-tl-lg bg-[#94D60A] p-1 pl-3">
 									Nama
 								</td>
-								<td>Stok</td>
-								<td>Keterangan</td>
-								<td>Harga</td>
-								{/* <td>Nama Barang</td>
-								<td>Jumlah</td> */}
+								<td>NIU</td>
+								<td>Email</td>
+								<td>No.Tlp</td>
+								<td>Nama Barang</td>
+								<td>Jumlah</td>
 								<td
 									className="rounded-tr-lg rounded-br-lg bg-[#94D60A] pr-2"
 									// onClick={modalTrigger}
@@ -339,20 +339,26 @@ export default function UserManagementComponent() {
 							</tr>
 						</thead>
 						<tbody className="">
-							{userDatas['data'].map((datas, key) => {
+							{userDatas['results'].map((datas, key) => {
 								return (
 									<tr key={key}>
 										<td className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer">
-											{datas.nama}
+											{datas.name}
 										</td>
 										<td className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer">
-											{datas.stok}
+											{datas.id}
 										</td>
 										<td className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer">
-											{datas.keterangan}
+											{datas.email}
 										</td>
 										<td className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer">
-											{datas.harga}
+											{datas.phone}
+										</td>
+										<td className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer">
+											-
+										</td>
+										<td className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer">
+											-
 										</td>
 										{/* <td className="pt-5 pl-3 border-[#D9D9D9] border-b-2 pb-2 cursor-pointer">
 											Minyak mantap
@@ -368,9 +374,9 @@ export default function UserManagementComponent() {
 										>
 											<div
 												// onClick={(e) => deleteUser(datas.id)}
-												className="p-1 border-2 border-[#94D60A] text-[#94D60A]  rounded text-center"
+												className="p-1 border-2 border-[red] text-[red]  rounded text-center"
 											>
-												Penukaran
+												Verfikasi
 											</div>
 										</td>
 									</tr>

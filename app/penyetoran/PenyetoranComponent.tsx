@@ -61,6 +61,7 @@ export default function UserManagementComponent() {
 		// );
 		setBerhasilVerif(!berhasilVerif);
 		getuserDatas(`https://fadhli.pythonanywhere.com/minyak/setor/?page=1`);
+		setModal('fake');
 	};
 
 	console.log(berhasilVerif);
